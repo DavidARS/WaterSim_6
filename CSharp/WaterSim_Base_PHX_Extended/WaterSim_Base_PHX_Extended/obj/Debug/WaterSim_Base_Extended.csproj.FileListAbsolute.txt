@@ -1,0 +1,11 @@
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\obj\Debug\WaterSim_Base_Extended.csprojResolveAssemblyReference.cache
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\obj\Debug\WaterSim_Base.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\WaterSim_Base.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\WaterSim_Base.pdb
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\obj\Debug\WaterSim_Base.pdb
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\UniDb2.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\Npgsql.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\Mono.Security.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\UniDb2.pdb
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\Npgsql.pdb
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base_Extended\WaterSim_Base\bin\Debug\Npgsql.xml

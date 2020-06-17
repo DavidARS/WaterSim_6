@@ -1,0 +1,5 @@
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base\WaterSim_Base\obj\Debug\WaterSim_Base.csprojResolveAssemblyReference.cache
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base\WaterSim_Base\bin\Debug\WaterSim_Base.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base\WaterSim_Base\bin\Debug\WaterSim_Base.pdb
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base\WaterSim_Base\obj\Debug\WaterSim_Base.dll
+G:\DCDC\WaterSim_DCDC_50\VS Projects\WaterSim_API_10_0\API_Projects\WaterSim_Base\WaterSim_Base\obj\Debug\WaterSim_Base.pdb

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F432E172-F50C-480B-9CA1-AFAE7451791D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WaterSim_Base</RootNamespace>
+    <AssemblyName>WaterSim_Base</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ExtendedParameter</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;#define ExtendedParameter</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.interop.access.dao, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\API_Source_Files\API_PHX_utilities.cs">
+      <Link>API_PHX_utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_BASE_Document_V_7_2.cs">
+      <Link>WaterSimDCDC_API_BASE_Document_V_7_2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_Base_Parameters_v_9_3.cs">
+      <Link>WaterSimDCDC_API_Base_Parameters_v_9_3.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_BAsE_Process_v_4.cs">
+      <Link>WaterSimDCDC_API_BAsE_Process_v_4.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_BASE_ShadowPM_v_6.cs">
+      <Link>WaterSimDCDC_API_BASE_ShadowPM_v_6.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_BASE_Strings v_9_6.cs">
+      <Link>WaterSimDCDC_API_BASE_Strings v_9_6.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_BASE_Utilities v 9_6.cs">
+      <Link>WaterSimDCDC_API_BASE_Utilities v 9_6.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_Base_Ver_1.cs">
+      <Link>WaterSimDCDC_API_Base_Ver_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_DB v_10.cs">
+      <Link>WaterSimDCDC_API_DB v_10.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_Parameters_PopData_v_5_0.cs">
+      <Link>WaterSimDCDC_API_Parameters_PopData_v_5_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Data_v_5_0.cs">
+      <Link>WaterSimDCDC_API_PHX_Data_v_5_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Document_1.cs">
+      <Link>WaterSimDCDC_API_PHX_Document_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_ENUMS_CONTSANTS_v_2_1.cs">
+      <Link>WaterSimDCDC_API_PHX_ENUMS_CONTSANTS_v_2_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_GWParameters ver 3_9.cs">
+      <Link>WaterSimDCDC_API_PHX_GWParameters ver 3_9.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Model_Interface_7_9.cs">
+      <Link>WaterSimDCDC_API_PHX_Model_Interface_7_9.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Parameters_Derived_v_9_1.cs">
+      <Link>WaterSimDCDC_API_PHX_Parameters_Derived_v_9_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Parameters_Sustainable_v_9_2.cs">
+      <Link>WaterSimDCDC_API_PHX_Parameters_Sustainable_v_9_2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_Provider_Default_Parms_v7_4.cs">
+      <Link>WaterSimDCDC_API_PHX_Provider_Default_Parms_v7_4.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_User_Mods_3.cs">
+      <Link>WaterSimDCDC_API_PHX_User_Mods_3.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_ver_10_3_1.cs">
+      <Link>WaterSimDCDC_API_PHX_ver_10_3_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_WaterSim_6_Mods_1.cs">
+      <Link>WaterSimDCDC_API_PHX_WaterSim_6_Mods_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_PHX_WebInterface_8_0.cs">
+      <Link>WaterSimDCDC_API_PHX_WebInterface_8_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_API_SIO_v_9_01.cs">
+      <Link>WaterSimDCDC_API_SIO_v_9_01.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AlterGPCD.cs">
+      <Link>WaterSimDCDC_Process_AlterGPCD.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AlterGPCD.designer.cs">
+      <Link>WaterSimDCDC_Process_AlterGPCD.designer.cs</Link>
+      <DependentUpon>WaterSimDCDC_Process_AlterGPCD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_GPCD_7_1.cs">
+      <Link>WaterSimDCDC_Process_AWS_GPCD_7_1.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_GPCD_7_1.designer.cs">
+      <Link>WaterSimDCDC_Process_AWS_GPCD_7_1.designer.cs</Link>
+      <DependentUpon>WaterSimDCDC_Process_AWS_GPCD_7_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_Limit_V3.cs">
+      <Link>WaterSimDCDC_Process_AWS_Limit_V3.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_Limit_V3.designer.cs">
+      <Link>WaterSimDCDC_Process_AWS_Limit_V3.designer.cs</Link>
+      <DependentUpon>WaterSimDCDC_Process_AWS_Limit_V3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_LimitGrowth.cs">
+      <Link>WaterSimDCDC_Process_LimitGrowth.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_LimitGrowth.designer.cs">
+      <Link>WaterSimDCDC_Process_LimitGrowth.designer.cs</Link>
+      <DependentUpon>WaterSimDCDC_Process_LimitGrowth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_Policy_WS6_V1.cs">
+      <Link>WaterSimDCDC_Process_Policy_WS6_V1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_Track_Available_Groundwater_v_9_0.cs">
+      <Link>WaterSimDCDC_Process_Track_Available_Groundwater_v_9_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_Track_Deficit_V_9_1.cs">
+      <Link>WaterSimDCDC_Process_Track_Deficit_V_9_1.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_Track_Deficit_V_9_1.designer.cs">
+      <Link>WaterSimDCDC_Process_Track_Deficit_V_9_1.designer.cs</Link>
+      <DependentUpon>WaterSimDCDC_Process_Track_Deficit_V_9_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\API_Source_Files\WaterSimDCDC_Process_Web_Process_v_9_3.cs">
+      <Link>WaterSimDCDC_Process_Web_Process_v_9_3.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WaterSimDCDC_API_PolicyData_v_1_0.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UniDb2\Projects\UniDb2\UniDb2.csproj">
+      <Project>{045be1b8-6625-4cf1-b5b2-7d60e4d4165d}</Project>
+      <Name>UniDb2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\API_Source_Files\WaterSimDCDC_Process_AlterGPCD.resx">
+      <Link>WaterSimDCDC_Process_AlterGPCD.resx</Link>
+      <DependentUpon>WaterSimDCDC_Process_AlterGPCD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_GPCD_7_1.resx">
+      <Link>WaterSimDCDC_Process_AWS_GPCD_7_1.resx</Link>
+      <DependentUpon>WaterSimDCDC_Process_AWS_GPCD_7_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\API_Source_Files\WaterSimDCDC_Process_AWS_Limit_V3.resx">
+      <Link>WaterSimDCDC_Process_AWS_Limit_V3.resx</Link>
+      <DependentUpon>WaterSimDCDC_Process_AWS_Limit_V3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\API_Source_Files\WaterSimDCDC_Process_LimitGrowth.resx">
+      <Link>WaterSimDCDC_Process_LimitGrowth.resx</Link>
+      <DependentUpon>WaterSimDCDC_Process_LimitGrowth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\API_Source_Files\WaterSimDCDC_Process_Track_Deficit_V_9_1.resx">
+      <Link>WaterSimDCDC_Process_Track_Deficit_V_9_1.resx</Link>
+      <DependentUpon>WaterSimDCDC_Process_Track_Deficit_V_9_1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

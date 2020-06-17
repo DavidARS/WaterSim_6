@@ -1,0 +1,735 @@
+!
+! Common block that holds the model variables in memory for the dll
+! last write was: 10.17.13
+! ==================================================================================================
+!
+
+!  Simulation controls
+! ---------------------
+!
+ integer(2) ::  gvo_errorCode, gv_startyear,gv_simduration,gv_simyear
+ common         gvo_errorCode,gv_startyear,gv_simduration,gv_simyear
+
+ integer ::     gvi_startSimulationYear,gvi_endSimulationYear,gvi_COtrace,gvi_SVTtrace
+ common         gvi_startSimulationYear,gvi_endSimulationYear,gvi_COtrace,gvi_SVTtrace
+
+ integer ::		gvi_baseYear,gvi_Octsixth_1,gvi_Octsixth_2,gvi_Octsixth_3
+ common			gvi_baseYear,gvi_Octsixth_1,gvi_Octsixth_2,gvi_Octsixth_3
+ 
+! Data path and output path (where the model data reside, and where outputs are written)
+!
+ character(len=200) :: gvc_DPath,gvc_OPath
+ common                gvc_DPath,gvc_OPath
+!
+logical(2) ::	gvl_APIstatus,gvl_readStatus,gvl_IwaniecYN,gvl_catchAPI
+common			gvl_APIstatus,gvl_readStatus,gvl_IwaniecYN,gvl_catchAPI
+! ===========================================================================================
+
+! Runtime changes to parameter Inputs
+! -----------------------------------
+! Kernel
+ integer(2) ::   gvi_alignMay2017a,gvi_align_1,gvi_align_2,lvi_N
+ common          gvi_alignMay2017a,gvi_align_1,gvi_align_2,lvi_N
+
+ logical(2) ::   gvl_errorFlag,gvl_writeLog,gvl_parmAllStrawsSucking,gvl_start
+ common          gvl_errorFlag,gvl_writeLog,gvl_parmAllStrawsSucking,gvl_start
+!
+
+! ==================================================================================================
+
+! Salt-Tonto-Verde Module
+! ------------------------
+!                cfs- for designations daily
+ real(4) ::     gvf_flowSVT(gpi_dailySVTrec,3),gvf_modifyNormalFlow(10),lvf_modifyNormalFlow(10)
+ common         gvf_flowSVT,gvf_modifyNormalFlow,lvf_modifyNormalFlow
+ 
+ real(4) ::		gvf_flowSaltTonto(gpi_dailySVTrec,3),gvf_flowVerde(gpi_dailySVTrec,3),gvf_LinearClimateFactorSVT(3)
+ common			gvf_flowSaltTonto,gvf_flowVerde,gvf_LinearClimateFactorSVT
+ 
+ real(4) ::     gv_climatefactorSVT,gv_droughtfactorSVT,gvi_alignMay2017b
+ common         gv_climatefactorSVT,gv_droughtfactorSVT,gvi_alignMay2017b
+ 
+ integer(4) ::  gv_indexyearSVT,gv_droughtyearSVT,gv_droughtyearendSVT,gvi_countYearsSVT
+ common         gv_indexyearSVT,gv_droughtyearSVT,gv_droughtyearendSVT,gvi_countYearsSVT
+!
+ integer(4) ::	gvi_NormalFlowEmpMax_AFac(10),gvi_align_DEC2013
+ common			gvi_NormalFlowEmpMax_AFac,gvi_align_DEC2013
+! ==================================================================================================
+
+! Colorado River Module
+! ----------------------
+!
+ real(4) ::     gv_climatefactorCO,gv_droughtfactorCO,gvf_LinearClimateFactorCO(3),lvf_align_3
+ common         gv_climatefactorCO,gv_droughtfactorCO,gvf_LinearClimateFactorCO,lvf_align_3
+  
+ integer(4) ::  gv_droughtyearCO,gv_indexyearCO,li_numdroughtyearsCO,gv_droughtyearendCO
+ common         gv_droughtyearCO,gv_indexyearCO,li_numdroughtyearsCO,gv_droughtyearendCO
+!
+! ==================================================================================================
+
+! Provider Module
+! -----------------
+!
+ integer(4) ::	gvi_ProviderDemandOption,gvi_ReductionDem_pctBaseline
+ common			gvi_ProviderDemandOption,gvi_ReductionDem_pctBaseline
+ 
+ integer(4) ::	gvi_GPCDmethod,gvi_AlterGPCD_pct,gi_ClimateAdjustmentYearEnd,gvi_ProviderAlterGPCD_pct(gvi_maxProV)
+ common			gvi_GPCDmethod,gvi_AlterGPCD_pct,gi_ClimateAdjustmentYearEnd,gvi_ProviderAlterGPCD_pct
+ 
+ integer(4) ::  gvi_ProviderMinGPCD(gvi_maxProV),gvi_alignMay2017c
+ common			gvi_ProviderMinGPCD,gvi_alignMay2017c
+ 
+ real(4) ::		gvf_WaterDemand_acft(gvi_maxProV,18,14),gvf_TotalDemand_acft(gvi_maxProV),lvf_align_5(gvi_maxProV),lvf_align_6
+ common			gvf_WaterDemand_acft,gvf_TotalDemand_acft,lvf_align_5,lvf_align_6
+ 
+ real(4) ::		gvf_parm_align_7(gvi_maxProV),gvf_parm_WStoRes_prop(gvi_maxProV),gvf_parm_WStoCom_prop(gvi_maxProV)
+ real(4) ::     gvf_parm_WStoInd_prop(gvi_maxProV)
+ common			gvf_parm_align_7,gvf_parm_WStoRes_prop,gvf_parm_WStoCom_prop,gvf_parm_WStoInd_prop
+ 
+ real(4) ::		gvf_parm_OutDoorResProp(gvi_maxProV),gvf_parm_OutDoorComProp(gvi_maxProV),gvf_parm_OutDoorIndProp(gvi_maxProV)
+ real(4) ::     gvf_align_8(gvi_maxProV)
+ common			gvf_parm_OutDoorResProp,gvf_parm_OutDoorComProp,gvf_parm_OutDoorIndProp,gvf_align_8
+!
+! ===================================================================================================================================
+!
+! GLobalSubroutines
+ real(4) ::		gvf_parm_alpha(gvi_maxProV),gvf_parm_gamma(gvi_maxProV),gvf_parm_gpcdBaseYear(gvi_maxProV),gvf_parm_GS3(gvi_maxProV)
+ common			gvf_parm_alpha,gvf_parm_gamma,gvf_parm_gpcdBaseYear,gvf_parm_GS3
+!
+
+! Citi Module
+! -----------------
+!
+ real(4) ::		gvf_parm_WWtoRWWTP(gvi_maxProV),gvf_parm_ROtoOutput(gvi_maxProV),gvf_parm_RWWtoRO(gvi_maxProV),gvf_align_9(gvi_maxProV)
+ common			gvf_parm_WWtoRWWTP,gvf_parm_ROtoOutput,gvf_parm_RWWtoRO,gvf_align_9
+
+ real(4) ::		gvf_parm_RtoVadose(gvi_maxProV),gvf_parm_RtoDInjection(gvi_maxProV),gvf_parm_RtoOutput(gvi_maxProV),gvf_parm_RtoInputMaxPct(gvi_maxProV)
+ common			gvf_parm_RtoVadose,gvf_parm_RtoDInjection,gvf_parm_RtoOutput,gvf_parm_RtoInputMaxPct
+
+ real(4) ::		gvf_parm_WStoDI(gvi_maxProV),gvf_parm_WStoVadose(gvi_maxProV),gvf_parm_GWtoGWTP(gvi_maxProV),gvf_parm_WStoDIamount(gvi_maxProV)
+ common			gvf_parm_WStoDI,gvf_parm_WStoVadose,gvf_parm_GWtoGWTP,gvf_parm_WStoDIamount
+
+ real(4) ::		gvf_parm_WWtoEffluent(gvi_maxProV),gvf_parm_WWtoIndReuse(gvi_maxProV),gvf_parm_EffluentToPP(gvi_maxProV),gvf_parm_EffluentToVadose(gvi_maxProV)
+ common			gvf_parm_WWtoEffluent,gvf_parm_WWtoIndReuse,gvf_parm_EffluentToPP,gvf_parm_EffluentToVadose
+
+ real(4) ::		gvf_parm_align_10(gvi_maxProV),gvf_parm_SWtoWB(gvi_maxProV),gvf_parm_WBtoSWamount(gvi_maxProV),gvf_align_11
+ common			gvf_parm_align_10,gvf_parm_SWtoWB,gvf_parm_WBtoSWamount,gvf_align_11
+
+ real(4) ::		gvf_parm_LitersPFres(gvi_maxProV),gvf_parm_FlushPDres(gvi_maxProV),gvf_parm_BWResProp(gvi_maxProV),gvf_parm_BWCioProp(gvi_maxProV)
+ common			gvf_parm_LitersPFres,gvf_parm_FlushPDres,gvf_parm_BWResProp,gvf_parm_BWCioProp
+
+ real(4) ::		gvf_parm_SWtoWBamount(gvi_maxProV),gvf_parm_SWtoVadoseAmt(gvi_maxProV),gvf_parm_ReclaimedOutdoor(gvi_maxProV),gvf_hold_RtoVadose(gvi_maxProV)
+ common			gvf_parm_SWtoWBamount,gvf_parm_SWtoVadoseAmt,gvf_parm_ReclaimedOutdoor,gvf_hold_RtoVadose
+
+ real(4) ::		gvf_hold_ROtoOutput(gvi_maxProV),gvf_hold_RtoDInjection(gvi_maxProV),gvf_hold_WStoDI(gvi_maxProV),gvf_hold_RtoOutput(gvi_maxProV)
+ common			gvf_hold_ROtoOutput,gvf_hold_RtoDInjection,gvf_hold_WStoDI,gvf_hold_RtoOutput
+
+ logical(2) ::	gvl_parm_toiletPct,gvl_parm_grayWater,gvl_LULCstatus,gvl_parm_shortage(gvi_maxProV)
+ common			gvl_parm_toiletPct,gvl_parm_grayWater,gvl_LULCstatus,gvl_parm_shortage
+!
+! ============================================================================================================================================================
+
+
+! General Parameters
+! --------------------
+!
+ real(4) ::		gvf_GPCDout(gvi_maxProV,100),gvf_GPCDraw(gvi_maxProV,100),gvf_Release
+ common			gvf_GPCDout,gvf_GPCDraw,gvf_Release
+
+ real(4) ::		gvf_designationsCAPandSRP(gvi_maxProV,3),gvf_parm_SWtoWBamtCAP(gvi_maxProV)
+ common			gvf_designationsCAPandSRP,gvf_parm_SWtoWBamtCAP
+ 
+ real(4) ::     gvf_SWtoWBCAPratioP4(gvi_maxProV),align2June_1(gvi_maxProV)
+ common			gvf_SWtoWBCAPratioP4,align2June_1
+!
+! ==============================================================================================
+
+! Salt/Verde/Tonto 
+! -----------------
+!
+ real(8) ::		li_deadpoolSVT,gvd_storageCapacitySVT,gvd_storageCapacityVerde,gvd_align_15
+ common			li_deadpoolSVT,gvd_storageCapacitySVT,gvd_storageCapacityVerde,gvd_align_15
+ 
+ real(8) ::		li_horsemesamax,li_mormanflatmax,li_rooseveltmax
+ real(8) ::		li_stewartmountainmax,li_bartlettmax,li_horseshoemax
+ common			li_horsemesamax,li_mormanflatmax,li_rooseveltmax,li_stewartmountainmax,li_bartlettmax,li_horseshoemax
+   
+ real(8) ::		gvd_saltTonto_maf_yr(gpi_lBY:gpi_uBY),gvd_verde_maf_yr(gpi_lBY:gpi_uBY)
+ common			gvd_saltTonto_maf_yr,gvd_verde_maf_yr
+  
+ real(8) ::		lv_State_A_maf(gpi_lBY:gpi_uBY),gvd_SVT_flow_maf(gpi_lBY:gpi_uBY)
+ common			lv_State_A_maf,gvd_SVT_flow_maf
+ 
+ real(8) ::		lvd_State_Verde_acft(gpi_lBY:gpi_uBY),lvd_State_Salt_acft(gpi_lBY:gpi_uBY)
+ common			lvd_State_Verde_acft,lvd_State_Salt_acft
+ 
+ real(8) ::		lvd_State_Roosevelt_acft(gpi_lBY:gpi_uBY),lvd_State_Others_acft(gpi_lBY:gpi_uBY)
+ common			lvd_State_Roosevelt_acft,lvd_State_Others_acft
+  
+ real(8) ::		lvd_align_16,li_initstorageSVT(2000:2010)
+ common			lvd_align_16,li_initstorageSVT
+ 
+ real(8) ::		gvd_acreageSVT(10,3),gvd_acftperAcreSVT
+ common			gvd_acreageSVT,gvd_acftperAcreSVT
+ 
+ real(4) ::		lv_maf_yr(gpi_lBY:gpi_uBY),gvf_verdeMonthly_acft(12),gvf_saltTontoMonthly_acft(12),gvf_janUsePropOfTotal
+ common			lv_maf_yr,gvf_verdeMonthly_acft,gvf_saltTontoMonthly_acft,gvf_janUsePropOfTotal
+
+ real(4) ::		gvf_tempBCstorageWaterUsed_acft(10),gvi_alignMay2017e
+ common			gvf_tempBCstorageWaterUsed_acft,gvi_alignMay2017e
+ 
+ real(4) ::		lvf_flowVerde_acft(3,100),lvf_flowSaltTonto_acft(3,100),gvf_saltFlowUsed(gpi_lBY:gpi_uBY),gvf_verdeFlowUsed(gpi_lBY:gpi_uBY)
+ common			lvf_flowVerde_acft,lvf_flowSaltTonto_acft,gvf_saltFlowUsed,gvf_verdeFlowUsed
+ 
+ real(4) ::		gvf_flowVerde_Monthly_maf(gpi_lBY:gpi_uBY,12),gvf_flowSalt_Monthly_maf(gpi_lBY:gpi_uBY,12)
+ common			gvf_flowVerde_Monthly_maf,gvf_flowSalt_Monthly_maf
+
+ integer ::		gvi_align_20,gvi_align_21,gvi_align_22,gv_dataSVT
+ common			gvi_align_20,gvi_align_21,gvi_align_22,gv_dataSVT
+ 
+ integer ::		vArecAv,vArecAst,gvi_countYearsSalt,gvi_countYearsVerde
+ common			vArecAv,vArecAst,gvi_countYearsSalt,gvi_countYearsVerde
+  
+ integer(4) ::	go_VerdeStorage_acft,go_SaltTontoStorage_acft,go_VerdeClassAused_acft,go_SaltTontoClassAused_acft
+ common			go_VerdeStorage_acft,go_SaltTontoStorage_acft,go_VerdeClassAused_acft,go_SaltTontoClassAused_acft
+
+ integer(4) ::	go_VerdeClassBCused_acft,go_SaltTontoClassBCused_acft,li_normalflowacftperacre
+ common			go_VerdeClassBCused_acft,go_SaltTontoClassBCused_acft,li_normalflowacftperacre
+ 
+ integer(4) ::	go_verdeRiverFlow_acft,go_saltTontoRiverFlow_acft
+ common			go_verdeRiverFlow_acft,go_saltTontoRiverFlow_acft
+ 
+ integer(4) ::	go_rooseveltStorage_acft_a,go_saltOtherStorage_acft_a
+ common			go_rooseveltStorage_acft_a,go_saltOtherStorage_acft_a
+
+!
+! ------------------
+! Global Outputs
+!
+ integer(4) ::  go_riverFlowSVT,go_StateSVT,go_rechargeSVTsrvReach,go_spillageSVT
+ common         go_riverFlowSVT,go_StateSVT,go_rechargeSVTsrvReach,go_spillageSVT
+!
+! =======================================================================================================================================
+ 
+  
+! Watershed B - Colorado River
+! -----------------------------
+!
+ real(4) ::		lvf_powToMeadInFlowsYearMinus1(86),gvf_totalInFlowCO,gvf_averageInFlowCO,gvf_popgrowthfactor
+ common			lvf_powToMeadInFlowsYearMinus1,gvf_totalInFlowCO,gvf_averageInFlowCO,gvf_popgrowthfactor
+    
+ real(4) ::		li_iflowCOacft(3,1250),li_powellequal(2000:2037,3),lvd_iflowCObase_acft(15),li_iflowCOacftScenario(75)
+ common			li_iflowCOacft,li_powellequal,lvd_iflowCObase_acft,li_iflowCOacftScenario
+ 
+ real(4) ::		align2June_2
+ common			align2June_2
+ 
+ real(8) ::		vState_B_maf(gpi_lBY:gpi_uBY),vState_Ba_maf(gpi_lBY:gpi_uBY)
+ common			vState_B_maf,vState_Ba_maf
+  
+ real(8) ::		vState_Bb_maf(gpi_lBY:gpi_uBY),gvd_align_26(gpi_lBY:gpi_uBY)
+ common			vState_Bb_maf,gvd_align_26
+  
+ real(4) ::		li_meaddeadpool,li_meadmax,li_powelldeadpool,li_powellmax
+ common			li_meaddeadpool,li_meadmax,li_powelldeadpool,li_powellmax
+
+ real(4) ::		li_capcapacity,li_capevapconst,li_capmaricopashare,li_yumaallocation
+ common			li_capcapacity,li_capevapconst,li_capmaricopashare,li_yumaallocation
+ 
+ real(4) ::		li_initstoragePowell(2000:2010),li_initstorageMead(2000:2010)
+ common			li_initstoragePowell,li_initstorageMead
+  
+ real(4) ::		lv_flow_B_maf(gpi_lBY:gpi_uBY),gvf_upperBasinDeliveries(2000:2060,3)
+ common			lv_flow_B_maf,gvf_upperBasinDeliveries
+
+ real(4) ::		gvf_upperBasinEstimate,gvf_COInFlowPowellToMead_acft(1906:2012,2),gvf_upperBasinCUse_acft_a,gvf_AgMax
+ common			gvf_upperBasinEstimate,gvf_COInFlowPowellToMead_acft,gvf_upperBasinCUse_acft_a,gvf_AgMax
+ 
+ logical(2)::	gvl_AZdeltaBurden,gvl_alignL1,gvl_alignL2,gvl_alignL3
+ common			gvl_AZdeltaBurden,gvl_alignL1,gvl_alignL2,gvl_alignL3
+
+ integer(4) ::  go_riverFlowCO,go_StateCO,go_StatePowell,go_StateMead
+ common         go_riverFlowCO,go_StateCO,go_StatePowell,go_StateMead
+  
+ integer ::     gvi_WaterToCOdelta_acft_a,gv_dataCO,lvi_flowCOacftMod(3,200),align5May2017g
+ common         gvi_WaterToCOdelta_acft_a,gv_dataCO,lvi_flowCOacftMod,align5May2017g
+ 
+ integer(4) ::  vArecB,go_AZshareCO,lv_recordCO(3),li_iyearCO(3,1250)
+ common         vArecB,go_AZshareCO,lv_recordCO,li_iyearCO
+ 
+!
+! ------------------
+! Global Outputs
+!
+ integer(4) ::  go_powellElevation,go_meadElevation,go_align_29,go_align_30
+ common         go_powellElevation,go_meadElevation,go_align_29,go_align_30
+!
+ integer(4)  :: go_upperBasinDeliveries,go_COdeltaWater_az,go_COdeltaRatioProvider_az(gvi_maxProV),go_alignJuly(gvi_maxProV)
+ common			go_upperBasinDeliveries,go_COdeltaWater_az,go_COdeltaRatioProvider_az,go_alignJuly
+!
+ integer(4) ::  go_ratioCOdeltaBurden,go_deliveriesCO,go_deliveriesSVT,go_CAP
+ common         go_ratioCOdeltaBurden,go_deliveriesCO,go_deliveriesSVT,go_CAP
+!
+ integer(4)  :: go_COdeltaWater_nv,go_COdeltaWater_ca,go_COdeltaWater_mx
+ common			go_COdeltaWater_nv,go_COdeltaWater_ca,go_COdeltaWater_mx
+!
+ integer(4) ::  go_CAPunusedPriority4(gvi_maxProV),go_CAPunusedPriority5(gvi_maxProV),go_lossPotentialP4(gvi_maxProV),go_lossPotentialP5(gvi_maxProV)
+ common         go_CAPunusedPriority4,go_CAPunusedPriority5,go_lossPotentialP4,go_lossPotentialP5
+
+ integer(4) ::  gvi_agCAPcreditsTransfered(gvi_maxProV),go_alignJuly27_c(gvi_maxProV),go_waterBankCAP4(gvi_maxProV),go_waterBankCAP5(gvi_maxProV)
+ common			gvi_agCAPcreditsTransfered,go_alignJuly27_c,go_waterBankCAP4,go_waterBankCAP5
+! ===========================================================================================================================================
+
+! Groundwater.f90
+! ---------------
+!
+ real(8) ::		vState_GWmodel_maf(gpi_lBY:gpi_uBY),gvd_CreditModel_acft(gpi_lBY:gpi_uBY,gvi_maxProV),gvd_align_38
+ common			vState_GWmodel_maf,gvd_CreditModel_acft,gvd_align_38
+   
+ real(8) ::		li_cagrdRecharge(gpi_lBY:gpi_uBY),li_absorptionoverflow,li_accesstosurfacewater,li_initialgroundwater
+ common			li_cagrdRecharge,li_absorptionoverflow,li_accesstosurfacewater,li_initialgroundwater
+
+ real(4) ::		gvf_usedGWater_acft(gvi_maxProV),gvf_annualGWStored_acft(gvi_maxProV),gvf_naturalRecharge_acft(gpi_lBY:gpi_uBY),gvf_deficitGWcredits_acft(gvi_maxProV)
+ common			gvf_usedGWater_acft,gvf_annualGWStored_acft,gvf_naturalRecharge_acft,gvf_deficitGWcredits_acft
+  
+ logical ::		gvl_rechargeAWBA,gvl_rechargeCAGRD,gvl_rechargeNatural
+ common			gvl_rechargeAWBA,gvl_rechargeCAGRD,gvl_rechargeNatural
+ 
+ real(4) ::		gvf_minimumPumpingMandI(gvi_maxProV)
+ common			gvf_minimumPumpingMandI
+ 
+ real(4) ::		gvf_setAnnualCredits_acft(gvi_maxProV),gvf_annualCredits_acft(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_setAnnualCredits_acft,gvf_annualCredits_acft
+  
+ real(4) ::		gof_getAnnualGWstored_acft(gvi_maxProV),gvf_totalAnnualCredits_acft(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gof_getAnnualGWstored_acft,gvf_totalAnnualCredits_acft
+  
+ real(4) ::		gvf_otherAnnualGWcredits_acft(gpi_lBY:gpi_uBY,gvi_maxProV),gvf_addedAnnualGWcredits(gvi_maxProV)
+ common			gvf_otherAnnualGWcredits_acft,gvf_addedAnnualGWcredits
+! 
+! ============================================================================================================================================================
+
+! Provider.f90
+! ------------
+!
+ real(8)::		lid_align_40(3),lid_capEquationparms(3),lid_capacftthresholds(5),lid_capminIPW
+ common			lid_align_40,lid_capEquationparms,lid_capacftthresholds,lid_capminIPW
+  
+ real(8) ::		lid_designationsSVT(42,10),lid_thresholddesigSVT(42,2),lid_acreageSVT(10),lid_designationsCAP(gvi_maxProV,2)
+ common			lid_designationsSVT,lid_thresholddesigSVT,lid_acreageSVT,lid_designationsCAP
+  
+ real(8) ::		lid_dailyDesignationsSVT(42,10),lid_dailyThresholdSVT(42,2),lvd_align_41(10,3),lvd_LinearRegression(gvi_maxProV,3)
+ common			lid_dailyDesignationsSVT,lid_dailyThresholdSVT,lvd_align_41,lvd_LinearRegression
+
+ real(8) ::		lid_providerpop(gpi_lBY:gpi_uBY,gvi_maxProV),lid_providerDemand(gpi_lBY:gpi_uBY,gvi_maxProV)
+ real(8) ::		lvd_providerDemand(gpi_lBY:gpi_uBY,gvi_maxProV),lvd_providerDemandRandM(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			lid_providerpop,lid_providerDemand,lvd_providerDemand,lvd_providerDemandRandM
+ 
+ real(8) ::		lvd_GrowthRateAdjPop(gpi_lBY:gpi_uBY,gvi_maxProV),lvd_GrowthRateAdjDemand(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			lvd_GrowthRateAdjPop,lvd_GrowthRateAdjDemand
+  
+ real(8) ::		lid_providerTrott(42,10),lid_providerAcres(gvi_maxProV,2)
+ common			lid_providerTrott,lid_providerAcres
+  
+ integer(4) ::	gii_regDemand,gii_regVadose,gii_regDirectInject,gii_regReclaimed
+ common			gii_regDemand,gii_regVadose,gii_regDirectInject,gii_regReclaimed
+ 
+ integer(4) ::	gii_regRO,gii_regSRPClassA,gii_regSRPClassBC,gii_regSRPNCS
+ common			gii_regRO,gii_regSRPClassA,gii_regSRPClassBC,gii_regSRPNCS
+ 
+ integer(4) ::	gii_regCAP,gii_regUnmet,gii_reg_2,gii_reg_3
+ common			gii_regCAP,gii_regUnmet,gii_reg_2,gii_reg_3
+ 
+ integer(4) ::	gii_regNewWater,gii_regBankedWater,gii_regDefaultPump,gii_regMuniPump
+ common			gii_regNewWater,gii_regBankedWater,gii_regDefaultPump,gii_regMuniPump
+ 
+ integer(4) ::  go_ProviderDemand(gvi_maxProV),go_annualDeliveriesCO(gvi_maxProV)
+ common         go_ProviderDemand,go_annualDeliveriesCO
+  
+ integer(4) ::  go_maxDeliveriesCO(gvi_maxProV),go_providerpop(gvi_maxProV)
+ common         go_maxDeliveriesCO,go_providerpop
+
+ integer(4) ::  gvi_designationsGW(gvi_maxProV,3),go_annualDeliveriesSRP(10),go_maxDeliveriesSRP(10),go_providersGPCD(gvi_maxProV)
+ common         gvi_designationsGW,go_annualDeliveriesSRP,go_maxDeliveriesSRP,go_providersGPCD
+    
+ real(4) ::		gv_PopGrowthRateAdjPct(gvi_maxProV),gvd_PopGrowthRateOn(gvi_maxProV),gvd_PopGrowthRateOther(gvi_maxProV)
+ common			gv_PopGrowthRateAdjPct,gvd_PopGrowthRateOn,gvd_PopGrowthRateOther
+    
+ real(4) ::		gvd_classABCacreRatio(gvi_maxProV)
+ common			gvd_classABCacreRatio
+   
+ real(4) ::		gvf_gpcdSlopeDefault(2,gvi_maxProV),gvf_populations(gpi_lBY:gpi_uBY,gvi_maxProV),gvf_demandNoAg(gvi_maxProV)
+ common			gvf_gpcdSlopeDefault,gvf_populations,gvf_demandNoAg
+  
+ real(4) ::		gvf_Unused_CO_acft(gvi_maxProV),gvf_Used_CO_acft(gvi_maxProV),gvf_incidentalCredit(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_Unused_CO_acft,gvf_Used_CO_acft,gvf_incidentalCredit
+  
+ real(4) ::		gvf_usedBankedWater_CAP(gvi_maxProV),gvf_UnmetDemand_CO(gvi_maxProV)
+ common			gvf_usedBankedWater_CAP,gvf_UnmetDemand_CO
+  
+ real(4) ::		gvf_availableSRP_acft(10),gvf_ResponseToTemperature,gvf_UsedDemand_A_acft(gvi_maxProV),gvf_Used_NCS_acft(gvi_maxProV)
+ common			gvf_availableSRP_acft,gvf_ResponseToTemperature,gvf_UsedDemand_A_acft,gvf_Used_NCS_acft
+  
+ real(4) ::		gvf_Pop_OnProject(gpi_minPVY:gpi_maxPVY,gvi_maxProV),gvf_Pop_Other(gpi_minPVY:gpi_maxPVY,gvi_maxProV),gvf_population(gpi_minPVY:gpi_maxPVY,gvi_maxProV,3),gvf_align_51
+ common			gvf_Pop_OnProject,gvf_Pop_Other,gvf_population,gvf_align_51
+  
+ real(4) ::		gvf_GRAPopulationOnProject(gpi_lBY:gpi_uBY,gvi_maxProV),gvf_GRAPopulationOther(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_GRAPopulationOnProject,gvf_GRAPopulationOther
+
+ real(4) ::		gvf_newSuppliesUsed_acft_a(gvi_maxProV),gvf_newSuppliesBalance_acft(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_newSuppliesUsed_acft_a,gvf_newSuppliesBalance_acft
+ 
+ real(4) ::		gvf_dynamicGPCD(3,gvi_maxProV),gvf_betaHoltGPCD(gvi_maxProV),gvf_gammaHoltGPCD(gvi_maxProV),gvf_oneGPCD(gvi_maxProV)
+ common			gvf_dynamicGPCD,gvf_betaHoltGPCD,gvf_gammaHoltGPCD,gvf_oneGPCD
+ 
+ integer(4) ::	gvi_eightyPercentRule(gvi_maxProV),gvi_gpcd_2010(2000:2013,gvi_maxProV)
+ common			gvi_eightyPercentRule,gvi_gpcd_2010
+    
+ integer(4) ::	gvi_WBankingOption(gvi_maxProV),gvi_providerpop(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvi_WBankingOption,gvi_providerpop
+  
+ integer(4) ::	gi_ProviderPopulationOn(gvi_maxProV),go_PopGrowthRate(gvi_maxProV)
+ common			gi_ProviderPopulationOn,go_PopGrowthRate
+  
+ integer(4) ::	gi_ProviderPopulationOther(gvi_maxProV),gvi_newWaterSupplies_acft_a(gvi_maxProV)
+ common			gi_ProviderPopulationOther,gvi_newWaterSupplies_acft_a
+ 
+ integer(4) ::	go_OnProjectDemand(gvi_maxProV),go_OffProjectDemand(gvi_maxProV)
+ common			go_OnProjectDemand,go_OffProjectDemand
+
+ integer(4) ::	go_PopulationOnProject(gvi_maxProV),go_PopulationOther(gvi_maxProV)
+ common			go_PopulationOnProject,go_PopulationOther
+ 
+ integer(4) ::	gvi_defaultMandIPumping_Pct(gvi_maxProV), gvi_alignJuly30(gvi_maxProV)
+ common			gvi_defaultMandIPumping_Pct, gvi_alignJuly30
+ 
+ logical :: 	gvl_maskSRP(gvi_maxProV),gvl_maskCAP(gvi_maxProV)
+ common 		gvl_maskSRP,gvl_maskCAP
+  
+ logical ::  	gvl_popFromInterfaceOn(gvi_maxProV),gvl_popFromInterfaceOther(gvi_maxProV)
+ common      	gvl_popFromInterfaceOn,gvl_popFromInterfaceOther
+  
+ logical :: 	gvl_removeRestrictionsCO(gvi_maxProV),gvl_removeRestrictionsSVT(gvi_maxProV)
+ common 	    gvl_removeRestrictionsCO,gvl_removeRestrictionsSVT
+  
+ logical :: 	gvl_removeGWRestrictions(gvi_maxProV),gvl_modelVinzeJohnston
+ common 	    gvl_removeGWRestrictions,gvl_modelVinzeJohnston
+
+! --------------
+! Global Outputs
+!
+ integer(4) ::	go_residentialGPCD(gvi_maxProV),go_mandiCAP,gv_EmpiricalGPCD(gvi_maxProV),go_industrialGPCD(gvi_maxProV)
+ common			go_residentialGPCD,go_mandiCAP,gv_EmpiricalGPCD,go_industrialGPCD
+  
+ integer(4) ::  gv_AdjustedGPCD(gvi_maxProV),go_GWPumpageMuni_acft(gvi_maxProV),go_GWRecharge_acft(gvi_maxProV),go_ProviderWaterUsed_acft(gvi_maxProV)
+ common         gv_AdjustedGPCD,go_GWPumpageMuni_acft,go_GWRecharge_acft,go_ProviderWaterUsed_acft
+  
+ integer(4) ::  go_SWdesignations_acft(gvi_maxProV),go_GWPumpageSRP_acft(gvi_maxProV),go_classAdesignations(10),May2017alignA
+ common         go_SWdesignations_acft,go_GWPumpageSRP_acft,go_classAdesignations,May2017alignA
+ 
+ integer(4) ::  go_classBCdesignations(10),go_classBCmax(10)
+ common         go_classBCdesignations,go_classBCmax
+
+ integer(4) ::  go_adjustedGPCD(35),go_SES_GPCD(35)
+ common         go_adjustedGPCD,go_SES_GPCD
+  
+ integer(4) ::	go_classBCstorage_acft(10),go_classBCstorageMax_acft(10)
+ common			go_classBCstorage_acft,go_classBCstorageMax_acft
+  
+ integer(4) ::	go_newSupplies_acft_a(gvi_maxProV),go_rawGPCD(gvi_maxProV)
+ common			go_newSupplies_acft_a,go_rawGPCD
+! 
+! =============================================================================================================================================================
+  
+! Citi Water Budgets
+! ------------------
+!
+ real(4) ::     vState_WB_Aquifer(gpi_lBY:gpi_uBY,gvi_maxProV),vState_WB_Vadose(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common         vState_WB_Aquifer,vState_WB_Vadose
+ 
+ real(4) ::     gvf_RateGreyWaterRES(gvi_maxProV), gvf_RateGreyWaterCIO(gvi_maxProV)  
+ common         gvf_RateGreyWaterRES,gvf_RateGreyWaterCIO
+  
+ integer(4) ::  lv_fluxReclaimedResGreywater(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common         lv_fluxReclaimedResGreywater
+  
+ integer(4) ::  lv_fluxReclaimedIndGreywater(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common         lv_fluxReclaimedIndGreywater
+  
+ integer(4) ::  lv_fluxReclaimedComGreywater(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common         lv_fluxReclaimedComGreywater
+ 
+ integer(4) ::  gvi_timeLagVadose(gvi_maxProV)
+ common     	gvi_timeLagVadose
+   
+ integer(4) ::  go_ProviderGroundWater_a(gvi_maxProV),gvi_ProviderGroundWater_a(gvi_maxProV),May2017alignB,May2017alignC
+ common         go_ProviderGroundWater_a,gvi_ProviderGroundWater_a,May2017alignB,May2017alignC
+       
+ real(4) ::		lvf_MetDataProbability(2000:2060,gvi_maxProV,3),lvf_MetData(gpi_lBY:gpi_uBY,12,3),lvf_MetDataProjected(gpi_lBY:gpi_uBY,12,3),lvf_Beta
+ common			lvf_MetDataProbability,lvf_MetData,lvf_MetDataProjected,lvf_Beta
+  
+ real(4) ::		gvf_reclaimedInput(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB),gvf_ROreclaimedInput(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common			gvf_reclaimedInput,gvf_ROreclaimedInput
+  
+ real(4) ::		gvf_reclaimedOutput(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB),gvf_ROreclaimedOutput(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common			gvf_reclaimedOutput,gvf_ROreclaimedOutput
+    
+ real(4) ::		gvf_reclaimedBalance(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB),gvf_ROreclaimedBalance(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB)
+ common			gvf_reclaimedBalance,gvf_ROreclaimedBalance
+  
+ real(4) ::		gvf_WBankingBalance(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB),gv_AgWaterPumpingSRV(gpi_lBY:gpi_uBY,6)
+ common			gvf_WBankingBalance,gv_AgWaterPumpingSRV
+  
+ real(4) ::		gvf_GW_Banking(gpi_lBY:gpi_uBY,gvi_maxProV,gpi_timeStepWB),gvf_AG_Banking(gpi_lBY:gpi_uBY)
+ common			gvf_GW_Banking,gvf_AG_Banking
+  
+ real(4) ::		gvf_GW_Banking_Hold(gvi_maxProV),gvf_reclaimedInputMax(gpi_lBY:gpi_uBY,gvi_maxProV),gvf_align_61(gvi_maxProV),gvf_lagVadoseToAquifer(gpi_laggedStartYr:2100,gvi_maxProV)
+ common			gvf_GW_Banking_Hold,gvf_reclaimedInputMax,gvf_align_61,gvf_lagVadoseToAquifer
+  
+ real(4) ::		gvf_providerAreaTotal_m2,gvf_AgNet,gvf_AgIn, gvf_lagToVadose(gpi_lBY:gpi_uBY,gvi_maxProV,8)
+ common			gvf_providerAreaTotal_m2,gvf_AgNet,gvf_AgIn,gvf_lagToVadose
+
+ real(4) ::		gvf_gpcdIndoor_behavior(gvi_maxProV,10,3), gvf_gpcdOutdoor_behavior(gvi_maxProV,7,3)
+ common			gvf_gpcdIndoor_behavior,gvf_gpcdOutdoor_behavior
+  
+ real(4) ::		gvf_gpcdIndoor_efficiency(gvi_maxProV,10,3), gvf_gpcdOutdoor_efficiency(gvi_maxProV,7,3)
+ common			gvf_gpcdIndoor_efficiency,gvf_gpcdOutdoor_efficiency
+ 
+ real(4) ::		gvf_gpcdOutdoor_infrastructure(gvi_maxProV,7,3)
+ common			gvf_gpcdOutdoor_infrastructure
+
+ real(4) ::		gvf_RateResLeak(gvi_maxProV),gvf_RateComLeak(gvi_maxProV),gvf_RateIndLeak(gvi_maxProV)
+ common			gvf_RateResLeak,gvf_RateComLeak,gvf_RateIndLeak
+  
+ logical(2) ::	gvl_IncludeMeteorology,gvl_WriteDisk,gvl_utilizeLCLU,gvl_alignOct2016
+ common			gvl_IncludeMeteorology,gvl_WriteDisk,gvl_utilizeLCLU,gvl_alignOct2016
+!
+! ---------------------------------------------------------------------------
+ 
+! ------------------
+! Global Outputs
+!
+ real(4) ::		gof_regionalGW,gof_Outflow, gvf_regionalGWrecharged,gof_Inflow
+ common			gof_regionalGW,gof_Outflow,gvf_regionalGWrecharged,gof_Inflow
+
+ real(4) ::		gof_naturalRecharge,gof_AgAndOtherPumped,gof_nonPotable_useOutdoor,gvf_diff
+ common			gof_naturalRecharge,gof_AgAndOtherPumped,gof_nonPotable_useOutdoor,gvf_diff
+  
+ real(4) ::		gof_flushesPCD(gvi_maxProV),gof_showersBathPCD(gvi_maxProV),gif_showersBathPCT,gof_align_60
+ common			gof_flushesPCD,gof_showersBathPCD,gif_showersBathPCT,gof_align_60
+
+ integer(4) ::	go_GWBanked_acft(gvi_maxProV),go_GWBankUsed_acft(gvi_maxProV)
+ common			go_GWBanked_acft,go_GWBankUsed_acft
+
+ integer(4) ::	go_ReclaimedWoutput_acft(gvi_maxProV),go_ReclaimedWused_acft(gvi_maxProV)
+ common			go_ReclaimedWoutput_acft,go_ReclaimedWused_acft
+  
+ integer(4) ::	go_ReclaimedWtotal_acft(gvi_maxProV)
+ common			go_ReclaimedWtotal_acft
+
+ integer(4) ::	go_ReclaimedWrecharged_acft(gvi_maxProV),go_ReclaimedWdischarged_acft(gvi_maxProV)
+ common			go_ReclaimedWrecharged_acft,go_ReclaimedWdischarged_acft
+
+ integer(4) ::	go_ROReclaimedWoutput_acft(gvi_maxProV),go_ROReclaimedWused_acft(gvi_maxProV)
+ common			go_ROReclaimedWoutput_acft,go_ROReclaimedWused_acft
+  
+ integer(4) ::	go_ROReclaimedWDI_acft(gvi_maxProV),go_ReclaimedWDI_acft(gvi_maxProV)
+ common			go_ROReclaimedWDI_acft,go_ReclaimedWDI_acft
+  
+ integer(4) ::	go_EffluentPPlant_acft(gvi_maxProV),go_EffluentVadose_acft(gvi_maxProV)
+ common			go_EffluentPPlant_acft,go_EffluentVadose_acft
+  
+ integer(4) ::	go_DemandDeficit_acft(gvi_maxProV),go_EffluentAg_acft
+ common			go_DemandDeficit_acft,go_EffluentAg_acft
+ 
+ integer(4) ::	go_EffluentToDischarge_acft(gvi_maxProV),go_Effluent_acft(gvi_maxProV)
+ common			go_EffluentToDischarge_acft,go_Effluent_acft
+ 
+ integer(4) ::	go_fluxVadoseToAquifer(gvi_maxProV)
+ common			go_fluxVadoseToAquifer
+ 
+ integer(4) ::	go_TWWTP_acft(gvi_maxProV),go_GrayWaterReclaimed_acft(gvi_maxProV,3)
+ common			go_TWWTP_acft,go_GrayWaterReclaimed_acft
+!
+! =======================================================================================================================================================
+
+! Agriculture and Other
+! -----------------------
+!
+ integer(4)		gvi_WaterFromAgPumping_acft_a(gvi_maxProV),gvi_WaterFromAgSurface_acft_a(gvi_maxProV)
+ common			gvi_WaterFromAgPumping_acft_a,gvi_WaterFromAgSurface_acft_a
+ 
+ integer(4)		go_surfaceAgTotal_AF(gpi_lBY:gpi_uBY),go_pumpingAgTotal_AF(gpi_lBY:gpi_uBY)
+ common			go_surfaceAgTotal_AF,go_pumpingAgTotal_AF
+ 
+ integer(4)		go_align14march1(gpi_lBY:gpi_uBY),go_pumpAgTotalEfficiency_AF(gpi_lBY:gpi_uBY)
+ common			go_align14march1,go_pumpAgTotalEfficiency_AF
+ 
+ integer(4)		go_incidentalCredit_acft(gvi_maxProV),go_totalCredits_acft(gvi_maxProV),go_annualCredits_acft(gvi_maxProV),go_alignJune3_3
+ common			go_incidentalCredit_acft,go_totalCredits_acft,go_annualCredits_acft,go_alignJune3_3
+ 
+ integer(4)		go_addedCreditsAgToMuni_acft(gvi_maxProV),go_totalAddedCredits_acft(gvi_maxProV),go_NetAgWater_acft(gvi_maxProV),gvi_AgEndYear
+ common			go_addedCreditsAgToMuni_acft,go_totalAddedCredits_acft,go_NetAgWater_acft,gvi_AgEndYear
+ 
+ integer(4)	    go_AgEfficiency,gvi_StartFactors,gvi_EndAgRetire,gvi_AgPumpCurveIndex
+ common			go_AgEfficiency,gvi_StartFactors,gvi_EndAgRetire,gvi_AgPumpCurveIndex
+ 
+ integer(4) ::	gvi_WaterToAgriculture_acft_a(gvi_maxProV),gvi_Agpool_acft_a,gii_CAGRD_acft,go_CAGRD_acft
+ common			gvi_WaterToAgriculture_acft_a,gvi_Agpool_acft_a,gii_CAGRD_acft,go_CAGRD_acft
+ 
+ integer(4) ::	gvi_defaultAgPumping_acft_a(gvi_maxProV),go_WaterFromAgPumping_acft_a(gvi_maxProV),gvi_DefaultAgSurface_acft_a(gvi_maxProV),go_WaterFromAgSurface_acft_a(gvi_maxProV)
+ common			gvi_defaultAgPumping_acft_a,go_WaterFromAgPumping_acft_a,gvi_DefaultAgSurface_acft_a,go_WaterFromAgSurface_acft_a
+ 
+ integer(4) ::  go_GrossAgWater_acft(gvi_maxProV),gvi_AgCreditTransferPCT
+ common			go_GrossAgWater_acft,gvi_AgCreditTransferPCT
+ 
+ integer(4) ::  gvi_ProviderAgCreditCurveIndex(gvi_maxProV),gvi_ProviderFlowToCOdelta_AF(gvi_maxProV)
+ common			gvi_ProviderAgCreditCurveIndex,gvi_ProviderFlowToCOdelta_AF
+ 
+ integer(4) ::  go_AgWaterCAP_PCT(gvi_maxProV),go_AgWaterSRP_PCT(gvi_maxProV),go_AgProductionPCT,go_AgWaterUsedByMuni_PCT_a(gvi_maxProV)
+ common			go_AgWaterCAP_PCT,go_AgWaterSRP_PCT,go_AgProductionPCT,go_AgWaterUsedByMuni_PCT_a
+ 
+ integer(4) ::	go_AgWaterCAP_AF(gvi_maxProV),go_AgWaterSRP_AF(gvi_maxProV),go_AgWaterGW_AF(gvi_maxProV),go_AgWaterCAPavailable_AF(gvi_maxProV)
+ common			go_AgWaterCAP_AF,go_AgWaterSRP_AF,go_AgWaterGW_AF,go_AgWaterCAPavailable_AF
+ 
+ integer(4) ::  go_MaxAgPumping(gvi_maxProV),go_MaxAgSurface(gvi_maxProV),go_AgToLCLUdemand(gvi_maxProV),lvi_AgPool
+ common			go_MaxAgPumping,go_MaxAgSurface,go_AgToLCLUdemand,lvi_AgPool
+ 
+ real(4) ::		gvf_totalAreaAg,gvf_areaAg(gvi_maxProV),gvf_pumpingAg,gvf_AgToVadoseFlux
+ common			gvf_totalAreaAg,gvf_areaAg,gvf_pumpingAg,gvf_AgToVadoseFlux
+
+ real(4) ::		gvf_AddAgVadose,gvf_WaterToCommercialTurf_Prop,gvf_totalAreaAgSURF,gvf_relativeAreaAg(gvi_maxProV)
+ common			gvf_AddAgVadose,gvf_WaterToCommercialTurf_Prop,gvf_totalAreaAgSURF,gvf_relativeAreaAg
+ 
+ real ::		gvf_agProductionDiff(gvi_maxProV),gvf_acerageTotal(gvi_maxProV),gvf_relativeAgArea(gvi_maxProV),gvf_relativeAgAreaCAP(gvi_maxProV)
+ common			gvf_agProductionDiff,gvf_acerageTotal,gvf_relativeAgArea,gvf_relativeAgAreaCAP
+ 
+ real(4) ::     gvf_LinearAgFactor(3),gvf_AgRetirementPct,gvf_Ag_alphaPump(30),gvf_AgPumpingEst_acft_a(2,gvi_maxProV,100)
+ common         gvf_LinearAgFactor,gvf_AgRetirementPct,gvf_Ag_alphaPump,gvf_AgPumpingEst_acft_a
+ 
+ real::			gvf_Ag_alphaSurfOther(20),gvf_Ag_alphaSurfCAP(20),gvf_AgSurfOtherEst_acft_a(2,100),gvf_AgSurfCAPEst_acft_a(2,gvi_maxProV,100)
+ common			gvf_Ag_alphaSurfOther,gvf_Ag_alphaSurfCAP,gvf_AgSurfOtherEst_acft_a,gvf_AgSurfCAPEst_acft_a
+ 
+ real::			gvf_agSurfOtherEDefault_AF_a(2,100),gvf_AgSurfCAPEstDefault_acft_a(2,100),gvf_AgSurfOtherEstMax_acft_a(2,100),gvf_AgSurfCAPEstMax_acft_a(2,100)
+ common         gvf_agSurfOtherEDefault_AF_a,gvf_AgSurfCAPEstDefault_acft_a,gvf_AgSurfOtherEstMax_acft_a,gvf_AgSurfCAPEstMax_acft_a
+ 
+ real::			gvf_AgBenchMarkOther,gvf_AgBenchMarkCAP,gvf_AgBenchMarkGWcredits,gvf_addGroundwaterFromAg(gvi_maxProV)
+ common			gvf_AgBenchMarkOther,gvf_AgBenchMarkCAP,gvf_AgBenchMarkGWcredits,gvf_addGroundwaterFromAg
+ 
+ real::         gvf_AgGWpotentialCredits,gvf_AgCAPpotential_AF(gvi_maxProV),gvf_AgCAPused_AF(gvi_maxProV),gvf_AgGWpotential_AF(gvi_maxProV)
+ common			gvf_AgGWpotentialCredits,gvf_AgCAPpotential_AF,gvf_AgCAPused_AF,gvf_AgGWpotential_AF
+ 
+ real::			gvf_defaultAgSurface(gvi_maxProV),gvf_defaultAgPumping(gvi_maxProV),gvf_maxAgPumping(gvi_maxProV),May172017aa
+ common         gvf_defaultAgSurface,gvf_defaultAgPumping,gvf_maxAgPumping,May172017aa
+  
+ real ::		gvf_AgGroundWater_2015,gvf_AgSurfaceWater_2015,gvf_AgEffluent_2015,gvf_AgWaterTotals(3)
+ common			gvf_AgGroundWater_2015,gvf_AgSurfaceWater_2015,gvf_AgEffluent_2015,gvf_AgWaterTotals
+ 
+ real ::		gvf_AgEfficiency(gvi_maxProV),gvf_AgACperAF2015(gvi_maxProV),gvf_acerageAg(gpi_lBY:gpi_uBY,gvi_maxProV),gvf_AgAFGWTotal(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_AgEfficiency,gvf_AgACperAF2015,gvf_acerageAg,gvf_AgAFGWTotal
+ 
+ real ::		gvf_EffluentToAg_diff(gpi_lBY:gpi_uBY),gvf_ratioMaricopaAg,gvf_EffluentToUrban(gpi_lBY:gpi_uBY),gvf_AgCreditWeight(gpi_lBY:gpi_uBY,gvi_maxProV)
+ common			gvf_EffluentToAg_diff,gvf_ratioMaricopaAg,gvf_EffluentToUrban,gvf_AgCreditWeight
+ 
+ real ::		gvf_AgGroundWater_2015p(gvi_maxProV),gvf_AgSurfaceWater_2015p(gvi_maxProV),gvf_AgEffluent_2015p(gvi_maxProV),gvf_AgWaterTotalsP(3,gvi_maxProV)
+ common			gvf_AgGroundWater_2015p,gvf_AgSurfaceWater_2015p,gvf_AgEffluent_2015p,gvf_AgWaterTotalsP
+ 
+! =================================================================================================================================
+
+! WaterSim 6 additions
+! -----------------------
+!
+ real ::		gvf_LCLUdemand(gpi_LULC,gvi_maxProV),gvf_houseHolds(4,gvi_maxProV),gvf_alignOct28_2,gvf_alignOct28_3
+ common			gvf_LCLUdemand,gvf_houseHolds,gvf_alignOct28_2,gvf_alignOct28_3
+
+integer(4) ::  gii_harvestRainWater_AF(gvi_maxProV),gii_StormWaterCapacity_m3(gvi_maxProV),go_harvestRainWater_AF(gvi_maxProV),go_HarvestStormWater_AF(gvi_maxProV)
+common		   gii_harvestRainWater_AF,gii_StormWaterCapacity_m3,go_harvestRainWater_AF,go_HarvestStormWater_AF
+!
+integer(4) ::  go_resGPCDgrayWater(gvi_maxProV),go_comGPCDgrayWater(gvi_maxProV),go_indGPCDgrayWater(gvi_maxProV),go_GrossStormWater_AF(gvi_maxProV)
+common		   go_resGPCDgrayWater,go_comGPCDgrayWater,go_indGPCDgrayWater,go_GrossStormWater_AF
+!
+logical(2) ::  gvl_rainWaterHarvesting,gvl_stormWaterHarvesting,gvl_rainWaterHarvestResOnly,gvl_rainWaterHarvestComOnly
+common         gvl_rainWaterHarvesting,gvl_stormWaterHarvesting,gvl_rainWaterHarvestResOnly,gvl_rainWaterHarvestComOnly
+!
+logical(2) ::  gvl_IwaniecScenarios_PPtoAg,gvl_IwaniecScenarios_PPtoCities,gvl_APIcleared,gvl_NoleaksYN
+common         gvl_IwaniecScenarios_PPtoAg,gvl_IwaniecScenarios_PPtoCities,gvl_APIcleared,gvl_NoleaksYN
+!
+real	   ::  gvf_rainFall(gvi_maxProV),gvf_landCover_2010(gpi_LULC,gvi_maxProV),gvf_landCover_2060(gpi_LULC,gvi_maxProV),gvf_slope(gpi_LULC,gvi_maxProV)
+common		   gvf_rainFall,gvf_landCover_2010,gvf_landCover_2060,gvf_slope
+!
+real	   ::  gvf_resEvapotrans(gvi_maxProV),gvf_comEvapotrans(gvi_maxProV),gvf_indEvapotrans(gvi_maxProV),gvf_otherEvapotrans(gvi_maxProV)
+common		   gvf_resEvapotrans,gvf_comEvapotrans,gvf_indEvapotrans,gvf_otherEvapotrans
+!
+real	   ::  gvf_resOutdoorPerc(gvi_maxProV),gvf_comOutdoorPerc(gvi_maxProV),gvf_indOutdoorPerc(gvi_maxProV),gvf_otherOutdoorPerc(gvi_maxProV)
+common		   gvf_resOutdoorPerc,gvf_comOutdoorPerc,gvf_indOutdoorPerc,gvf_otherOutdoorPerc
+!
+real       ::  gvf_intercept(gpi_LULC,gvi_maxProV),gvf_peakRainfall(gvi_maxProV),gvf_LULCProp(gpi_LULC,gvi_maxProV),gvf_reclaimedWater(gvi_maxProV)
+common         gvf_intercept,gvf_peakRainfall,gvf_LULCProp,gvf_reclaimedWater
+!
+real	   ::  gvf_agEvapotrans,gvf_agPercolation,gvf_align6Jan_2,gvf_align6Jan_1
+common		   gvf_agEvapotrans,gvf_agPercolation,gvf_align6Jan_2,gvf_align6Jan_1
+!
+real	   ::  gvf_grayWaterCompliance,gvf_yearsToAdopt,gvf_waterUseLCLU(gpi_LULC,gvi_maxProV),gvf_nonPotableTotalUsed(gvi_maxProV)
+common		   gvf_grayWaterCompliance,gvf_yearsToAdopt,gvf_waterUseLCLU,gvf_nonPotableTotalUsed
+!
+real	   ::  gvf_areaLCLU(gpi_LULC,gvi_maxProV,85),gvf_alignJan2_2017(gpi_LULC,gvi_maxProV),gvf_waterUseRatioLCLU(gpi_LULC,gvi_maxProV),gvf_propLandCover(gpi_LULC,gvi_maxProV)
+common		   gvf_areaLCLU,gvf_alignJan2_2017,gvf_waterUseRatioLCLU,gvf_propLandCover
+!
+!real	   ::  gvf_yearsToAdoptRainWater,gvf_yearsToAdoptGrayWater,gvf_YearsToInflection,gvf_OutdoorResProp(4),gvi_alignAug21_b
+!common		   gvf_yearsToAdoptRainWater,gvf_yearsToAdoptGrayWater,gvf_YearsToInflection,gvf_OutdoorResProp,gvi_alignAug21_b
+real	   ::  gvf_yearsToAdoptRainWater,gvf_yearsToAdoptGrayWater,gvf_YearsToInflection,gvf_OutdoorResProp(4),gvf_gpudMedian(3,gvi_maxProV)
+common		   gvf_yearsToAdoptRainWater,gvf_yearsToAdoptGrayWater,gvf_YearsToInflection,gvf_OutdoorResProp,gvf_gpudMedian
+
+!
+real	::     gvf_increment,gvf_gpcdLCLU(gpi_LULC,3,gvi_maxProV),gvf_gpcdLCLUinOut(gpi_LULC,3,2,gvi_maxProV),gvf_HouseholdProportion(3,gvi_maxProV)
+common		   gvf_increment,gvf_gpcdLCLU,gvf_gpcdLCLUinOut,gvf_HouseholdProportion
+!
+integer(4) ::  go_surfAgProvider_AF(gvi_maxProV),go_effluentAgProvider_AF(gvi_maxProV),go_groundwaterAgProvider_AF(gvi_maxProV),gvi_retainVadoseFlux(gvi_maxProV)
+common         go_surfAgProvider_AF,go_effluentAgProvider_AF,go_groundwaterAgProvider_AF,gvi_retainVadoseFlux
+!
+real  ::		gvf_waterUseLCLUsquareMeter(gpi_LULC,gvi_maxProV),gvf_reclaimedUseOutdoors(gvi_maxProV),go_OutDemand_lclu_AF(3,gvi_maxProV),gvf_waterUseAgsmRunning(gpi_lBY:gpi_uBY,gvi_maxProV)
+common			gvf_waterUseLCLUsquareMeter,gvf_reclaimedUseOutdoors,go_OutDemand_lclu_AF,gvf_waterUseAgsmRunning
+!
+real ::         go_harvRainWaterUsed_AF(gvi_maxProV),go_graywaterWaterUsed_AF(gvi_maxProV),go_stormWaterUsedUsed_AF(gvi_maxProV),gvf_lcluPopulations(3,gvi_maxProV)
+common          go_harvRainWaterUsed_AF,go_graywaterWaterUsed_AF,go_stormWaterUsedUsed_AF,gvf_lcluPopulations
+!
+real ::			gvf_LinearRainfallFactor(3),gvf_rainfallfactor,gvf_medianAndPPH(gvi_maxProV,3),gvf_RainGrayCompliance
+common			gvf_LinearRainfallFactor,gvf_rainfallfactor,gvf_medianAndPPH,gvf_RainGrayCompliance
+
+! Outputs to the Interface
+!
+integer(4) ::  go_demand_MD_AF(gvi_maxProV),go_demand_HD_AF(gvi_maxProV),go_demand_LD_AF(gvi_maxProV),go_demand_TurfTree_AF(4,gvi_maxProV)
+common         go_demand_MD_AF,go_demand_HD_AF,go_demand_LD_AF,go_demand_TurfTree_AF
+!
+integer(4) ::  go_agEvapotrans,go_agPercolation,go_AgUnusedWater(gvi_maxProV),go_demand_AG_AF(gvi_maxProV)
+common		   go_agEvapotrans,go_agPercolation,go_AgUnusedWater,go_demand_AG_AF
+!
+integer(4) ::  go_align6JanB,gvi_IwaniecScenario,gvi_efficiencyLCLUres,gvi_provider
+common		   go_align6JanB,gvi_IwaniecScenario,gvi_efficiencyLCLUres,gvi_provider
+!
+integer(4) ::  go_resIndoorUse,go_resOutdoorUse,go_comIndoorUse,go_comOutdoorUse
+common		   go_resIndoorUse,go_resOutdoorUse,go_comIndoorUse,go_comOutdoorUse
+!
+integer(4) ::  go_indIndoorUse,go_indOutdoorUse,go_agUse,gvi_lcluGPCD(gvi_maxProV)
+common		   go_indIndoorUse,go_indOutdoorUse,go_agUse,gvi_lcluGPCD
+!
+integer(4) ::  go_rainWaterHarvested_SF_AF(gvi_maxProV),go_rainWaterHarvested_MF_AF(gvi_maxProV),go_rainWaterHarvested_PU_AF(gvi_maxProV),go_rainWaterHarvested_COM_AF(gvi_maxProV)
+common		   go_rainWaterHarvested_SF_AF,go_rainWaterHarvested_MF_AF,go_rainWaterHarvested_PU_AF,go_rainWaterHarvested_COM_AF
+!
+integer(4) ::	go_RainHarvestToTotalOutdoor(gvi_maxProV),go_GrayWaterToTotalOutdoor(gvi_maxProV),go_ReclaimedToTotalOutdoor(gvi_maxProV),go_nonpotableUsed(gvi_maxProV)
+common			go_RainHarvestToTotalOutdoor,go_GrayWaterToTotalOutdoor,go_ReclaimedToTotalOutdoor,go_nonpotableUsed
+
+! Parameter Default Variables- retain
+! 11.13.15
+real::			gdf_parms_newValueRetain(gvi_maxProV,10),gdf_parm_WWtoRWWTP(gvi_maxProV),gdf_parm_RWWtoRO(gvi_maxProV),gdf_parm_WWtoEFF(gvi_maxProV)
+common			gdf_parms_newValueRetain,gdf_parm_WWtoRWWTP,gdf_parm_RWWtoRO,gdf_parm_WWtoEFF
+
+real::			gdf_parm_EFFtoVadose(gvi_maxProV),gdf_parm_EFFtoPP(gvi_maxProV),gdf_parm_SWtoWBamt(gvi_maxProV),gdf_parm_OutDoorResPCT(gvi_maxProV)
+common			gdf_parm_EFFtoVadose,gdf_parm_EFFtoPP,gdf_parm_SWtoWBamt,gdf_parm_OutDoorResPCT
+
+logical ::		gvl_defaultRun(10,gvi_maxProV),gvl_waterSim5YN
+common			gvl_defaultRun,gvl_waterSim5YN
+
+! ===============================================================================================================================================
+! =======================================================================================================================================================
+! E.O.F.

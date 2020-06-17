@@ -1,0 +1,379 @@
+﻿<Project Version="8.00" DefaultTargets="Link" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="LF_Tasks.LFC" AssemblyFile="$(PackageRoot)\FortranTasks.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputType>Exe</OutputType>
+    <ProjectGuid>{302c6375-b000-4312-b597-45c19faaaa08}</ProjectGuid>
+    <AssemblyName>WaterSim_5</AssemblyName>
+    <Name>WaterSim_6</Name>
+    <RootNamespace>WaterSim_5</RootNamespace>
+    <PackageRoot>C:\Program Files (x86)\Lahey-Fujitsu Fortran\v7.2\Visual Studio 2008\Packages</PackageRoot>
+    <OutputName>WaterSim_5.exe</OutputName>
+    <DLL>True</DLL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <ImplicitNone>True</ImplicitNone>
+    <LinkOptions>-g|-in|-trap diou|-info|-stchk|-chkglobal|-chk|-verbose|-nologo</LinkOptions>
+    <EnableChecking_all>True</EnableChecking_all>
+    <EnableChecking_a>True</EnableChecking_a>
+    <EnableChecking_e>True</EnableChecking_e>
+    <EnableChecking_s>True</EnableChecking_s>
+    <EnableChecking_u>True</EnableChecking_u>
+    <GlobalChecking>True</GlobalChecking>
+    <EnableChecking>True</EnableChecking>
+    <StackChk>True</StackChk>
+    <Information>True</Information>
+    <Verbose>True</Verbose>
+    <Trap_all>True</Trap_all>
+    <Trap_d>True</Trap_d>
+    <Trap_i>True</Trap_i>
+    <Trap_o>True</Trap_o>
+    <Trap_u>True</Trap_u>
+    <Trap>True</Trap>
+    <NoLogo>True</NoLogo>
+    <OutputName>WaterSim_5.exe</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <OutputName>\WaterSimDCDC_model_6.dll</OutputName>
+    <OutputType>DynamicLibrary</OutputType>
+    <LinkOptions>-g|-info|-maxfatals 10|-verbose|-dll</LinkOptions>
+    <EnableChecking_all>False</EnableChecking_all>
+    <EnableChecking_a>False</EnableChecking_a>
+    <EnableChecking_e>False</EnableChecking_e>
+    <EnableChecking_s>False</EnableChecking_s>
+    <EnableChecking_u>False</EnableChecking_u>
+    <GlobalChecking>False</GlobalChecking>
+    <EnableChecking>False</EnableChecking>
+    <StackChk>False</StackChk>
+    <Trap_all>False</Trap_all>
+    <Trap_d>False</Trap_d>
+    <Trap_i>False</Trap_i>
+    <Trap_o>False</Trap_o>
+    <Trap_u>False</Trap_u>
+    <Trap>False</Trap>
+    <Verbose>True</Verbose>
+    <Information>True</Information>
+    <MaxFatals>10</MaxFatals>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Agriculture.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>9</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="BuildNotes.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\GlobalSubroutines.f90;C:\WaterSim\Fortran\WaterSim_6p5\Kernel.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+      <CompileOrder>2</CompileOrder>
+    </Compile>
+    <Compile Include="Demand.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>26</CompileOrder>
+    </Compile>
+    <Compile Include="DesignationsDaily.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>12</CompileOrder>
+    </Compile>
+    <Compile Include="Designations_CO.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>10</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="Designations_STV.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>11</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\SRPwaterOperations.f90</TouchList>
+    </Compile>
+    <Compile Include="Functions.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>3</CompileOrder>
+    </Compile>
+    <Compile Include="Global.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\Agriculture.f90;C:\WaterSim\Fortran\WaterSim_6p5\BuildNotes.f90;C:\WaterSim\Fortran\WaterSim_6p5\Demand.f90;C:\WaterSim\Fortran\WaterSim_6p5\Designations_CO.f90;C:\WaterSim\Fortran\WaterSim_6p5\Designations_STV.f90;C:\WaterSim\Fortran\WaterSim_6p5\DesignationsDaily.f90;C:\WaterSim\Fortran\WaterSim_6p5\Functions.f90;C:\WaterSim\Fortran\WaterSim_6p5\GlobalSubroutines.f90;C:\WaterSim\Fortran\WaterSim_6p5\GPCDdemand.f90;C:\WaterSim\Fortran\WaterSim_6p5\Groundwater.f90;C:\WaterSim\Fortran\WaterSim_6p5\Kernel.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90;C:\WaterSim\Fortran\WaterSim_6p5\LandUseLandCover.f90;C:\WaterSim\Fortran\WaterSim_6p5\Meteorology.f90;C:\WaterSim\Fortran\WaterSim_6p5\Parameter_control.f90;C:\WaterSim\Fortran\WaterSim_6p5\Provider.f90;C:\WaterSim\Fortran\WaterSim_6p5\ProviderPopulationandDemand.f90;C:\WaterSim\Fortran\WaterSim_6p5\Regressions.f90;C:\WaterSim\Fortran\WaterSim_6p5\SRPnewRelease.f90;C:\WaterSim\Fortran\WaterSim_6p5\SRPwaterOperations.f90;C:\WaterSim\Fortran\WaterSim_6p5\Strings.f90;C:\WaterSim\Fortran\WaterSim_6p5\TypeConstructs.f90;C:\WaterSim\Fortran\WaterSim_6p5\Water_CityModel.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_CO.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_SaltTonto.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_STV.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_Verde.f90</TouchList>
+      <CompileOrder>1</CompileOrder>
+    </Compile>
+    <Compile Include="GlobalSubroutines.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>26</CompileOrder>
+    </Compile>
+    <Compile Include="GPCDdemand.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>4</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="Groundwater.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>13</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\GlobalSubroutines.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="Kernel.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90;C:\WaterSim\Fortran\WaterSim_6p5\Program.f90</TouchList>
+      <CompileOrder>14</CompileOrder>
+    </Compile>
+    <Compile Include="KernelInterface.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>26</CompileOrder>
+    </Compile>
+    <Compile Include="LandUseLandCover.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\GlobalSubroutines.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+      <CompileOrder>15</CompileOrder>
+    </Compile>
+    <Compile Include="Meteorology.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>5</CompileOrder>
+    </Compile>
+    <Compile Include="Parameter_control.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\Demand.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+      <CompileOrder>6</CompileOrder>
+    </Compile>
+    <Compile Include="Program.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>26</CompileOrder>
+    </Compile>
+    <Compile Include="Provider.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>16</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="ProviderPopulationandDemand.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>17</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="Regressions.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\Provider.f90;C:\WaterSim\Fortran\WaterSim_6p5\ProviderPopulationandDemand.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_CO.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_STV.f90</TouchList>
+      <CompileOrder>7</CompileOrder>
+    </Compile>
+    <Compile Include="SRPnewRelease.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>18</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="SRPwaterOperations.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>19</CompileOrder>
+    </Compile>
+    <Compile Include="Strings.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>26</CompileOrder>
+    </Compile>
+    <Compile Include="TypeConstructs.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\Agriculture.f90;C:\WaterSim\Fortran\WaterSim_6p5\Designations_CO.f90;C:\WaterSim\Fortran\WaterSim_6p5\Designations_STV.f90;C:\WaterSim\Fortran\WaterSim_6p5\DesignationsDaily.f90;C:\WaterSim\Fortran\WaterSim_6p5\Groundwater.f90;C:\WaterSim\Fortran\WaterSim_6p5\Kernel.f90;C:\WaterSim\Fortran\WaterSim_6p5\LandUseLandCover.f90;C:\WaterSim\Fortran\WaterSim_6p5\Provider.f90;C:\WaterSim\Fortran\WaterSim_6p5\ProviderPopulationandDemand.f90;C:\WaterSim\Fortran\WaterSim_6p5\SRPnewRelease.f90;C:\WaterSim\Fortran\WaterSim_6p5\SRPwaterOperations.f90;C:\WaterSim\Fortran\WaterSim_6p5\Water_CityModel.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_CO.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_SaltTonto.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_STV.f90;C:\WaterSim\Fortran\WaterSim_6p5\WaterShed_Verde.f90</TouchList>
+      <CompileOrder>8</CompileOrder>
+    </Compile>
+    <Compile Include="WaterShed.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>21</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="WaterShed_CO.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>22</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="WaterShed_CO.f90" />
+    <Compile Include="WaterShed_SaltTonto.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>23</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="WaterShed_STV.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>24</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="WaterShed_Verde.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <CompileOrder>25</CompileOrder>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+    </Compile>
+    <Compile Include="Water_CityModel.f90">
+      <SubType>Code</SubType>
+      <FileExt>.obj</FileExt>
+      <FortranOptions>-g|-info|-maxfatals 10|-verbose</FortranOptions>
+      <TouchList>C:\WaterSim\Fortran\WaterSim_6p5\Demand.f90;C:\WaterSim\Fortran\WaterSim_6p5\KernelInterface.f90</TouchList>
+      <CompileOrder>20</CompileOrder>
+    </Compile>
+  </ItemGroup>
+  <Target Name="Link" DependsOnTargets="Build" Inputs="@(Compile -> '%(Filename)%(FileExt)')" Outputs="$(OutputPath)$(OutputName)">
+    <LFC Source="@(Compile -> '%(Filename)%(FileExt)')" OutputName="$(OutputPath)$(OutputName)" Options="$(LinkOptions)" />
+  </Target>
+  <Target Name="Build" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build1">
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)|$(CompileOptions)" Condition="%(Compile.Compileorder) == '26'" />
+  </Target>
+  <Target Name="Build1" DependsOnTargets="Build2" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '3'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '25'" />
+  </Target>
+  <Target Name="Build2" DependsOnTargets="Build3" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '4'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '24'" />
+  </Target>
+  <Target Name="Build3" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build4">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '5'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '23'" />
+  </Target>
+  <Target Name="Build4" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build5">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '6'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '22'" />
+  </Target>
+  <Target Name="Build5" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build6">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '7'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '21'" />
+  </Target>
+  <Target Name="Build6" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build7">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '8'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '20'" />
+  </Target>
+  <Target Name="Build7" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build8">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '9'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '19'" />
+  </Target>
+  <Target Name="Build8" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build9">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '10'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '18'" />
+  </Target>
+  <Target Name="Build9" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build10">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '11'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '17'" />
+  </Target>
+  <Target Name="Build10" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build11">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '12'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '16'" />
+  </Target>
+  <Target Name="Build11" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build12">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '13'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '15'" />
+  </Target>
+  <Target Name="Build12" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build13">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '14'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '14'" />
+  </Target>
+  <Target Name="Build13" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build14">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '15'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '13'" />
+  </Target>
+  <Target Name="Build14" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build15">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '16'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '12'" />
+  </Target>
+  <Target Name="Build15" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build16">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '17'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '11'" />
+  </Target>
+  <Target Name="Build16" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build17">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '18'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '10'" />
+  </Target>
+  <Target Name="Build17" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build18">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '19'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '9'" />
+  </Target>
+  <Target Name="Build18" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build19">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '20'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '8'" />
+  </Target>
+  <Target Name="Build19" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build20">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '21'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '7'" />
+  </Target>
+  <Target Name="Build20" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build21">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '22'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '6'" />
+  </Target>
+  <Target Name="Build21" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build22">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '23'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '5'" />
+  </Target>
+  <Target Name="Build22" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build23">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '24'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '4'" />
+  </Target>
+  <Target Name="Build23" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build24">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '25'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '3'" />
+  </Target>
+  <Target Name="Build24" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')" DependsOnTargets="Build25">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '26'" />
+    <LFC Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" Condition="%(Compile.Compileorder) == '2'" />
+  </Target>
+  <Target Name="Build25" Inputs="@(Compile)" Outputs="@(Compile -> '%(Filename)%(FileExt)')">
+    <Touch Files="%(Compile.TouchList)" Condition="%(Compile.Compileorder) == '2'" />
+    <LFC Condition="%(Compile.Compileorder) == '1'" Source="%(Compile.FullPath)" CompileOnly="-c" Options="%(Compile.FortranOptions)" />
+  </Target>
+  <Target Name="Clean">
+    <LFC Clean="True" Source="%(Compile.FullPath)" OutputName="$(OutputPath)$(OutputName)" />
+  </Target>
+  <Target Name="Rebuild" DependsOnTargets="Clean; Link" />
+</Project>
